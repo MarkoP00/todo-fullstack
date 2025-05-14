@@ -16,6 +16,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://todo-fullstack-0eh6.onrender.com",
+      "https://glittering-toffee-d0add8.netlify.app",
     ],
     credentials: false,
     methods: ["GET", "POST", "PATCH", "DELETE"],
