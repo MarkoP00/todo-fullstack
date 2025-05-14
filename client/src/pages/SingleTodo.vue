@@ -109,9 +109,7 @@ const editInput = ref(null);
 const editValue = ref("");
 
 async function getSingleTodo() {
-  const responseData = await fetchRequest(
-    `http://localhost:5050/api/todos/${providedID}`
-  );
+  const responseData = await fetchRequest(`/${providedID}`);
 
   if (responseData) {
     singleTodo.value = { ...responseData };
@@ -134,7 +132,7 @@ async function editTask(updateStatus = false) {
     }
 
     const responseData = await fetchRequest(
-      `http://localhost:5050/api/todos/${providedID}`,
+      `/${providedID}`,
       "PATCH",
       todoBody
     );
@@ -153,10 +151,7 @@ async function editTask(updateStatus = false) {
 
 async function deleteTodo() {
   try {
-    const responseData = await fetchRequest(
-      `http://localhost:5050/api/todos/${providedID}`,
-      "DELETE"
-    );
+    const responseData = await fetchRequest(`/${providedID}`, "DELETE");
 
     if (responseData) {
       singleTodo.value = [];

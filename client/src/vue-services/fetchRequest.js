@@ -1,7 +1,8 @@
 import callToast from "./callToast";
+const fetchLink = import.meta.env.VITE_API_URL + "/todos";
 
 export default async function apiRequest(
-  url = "http://localhost:5050/api/todos",
+  endpoint = "",
   method = "GET",
   body = null
 ) {
@@ -17,7 +18,7 @@ export default async function apiRequest(
       config.body = JSON.stringify(body);
     }
 
-    const response = await fetch(url, config);
+    const response = await fetch(fetchLink + endpoint, config);
     const responseData = await response.json();
 
     if (!response.ok) {

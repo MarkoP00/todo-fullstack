@@ -128,7 +128,7 @@ const props = defineProps({
 async function deleteTodo() {
   try {
     const responseData = await fetchRequest(
-      `http://localhost:5050/api/todos/${selectedTodoID.value}`,
+      `/${selectedTodoID.value}`,
       "DELETE"
     );
 
@@ -150,11 +150,7 @@ const toggleStatus = async (todo) => {
       finished: !todo.finished,
     };
 
-    const responseData = await fetchRequest(
-      `http://localhost:5050/api/todos/${todo._id}`,
-      "PATCH",
-      todoBody
-    );
+    const responseData = await fetchRequest(`/${todo._id}`, "PATCH", todoBody);
 
     if (!responseData) {
       callToast("error", "Something went wrong");

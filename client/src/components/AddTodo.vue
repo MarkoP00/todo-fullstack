@@ -39,11 +39,9 @@ async function addTodo() {
     return;
   }
   try {
-    const responseData = await fetchRequest(
-      "http://localhost:5050/api/todos",
-      "POST",
-      { title: todoData.value.title }
-    );
+    const responseData = await fetchRequest("", "POST", {
+      title: todoData.value.title,
+    });
 
     if (responseData) {
       emits("todo-added");
